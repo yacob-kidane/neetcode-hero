@@ -34,7 +34,7 @@ const HERO_PAUSE_AFTER_FLIP_BEFORE_CYCLE_MS = 1500;
 /** Pause (ms) on each full phrase before delete → next word (`Typewriter` `waitTime`). Not the post-flip hold. */
 const HERO_TYPEWRITER_WORD_PAUSE_MS = 5200;
 const HERO_CARD_COPY =
-  "The definitive platform for developers who want to simplifiy the technical interview prep by with structured, pattern-based roadmap trusted by over a million engineers. Master the patterns, not just the problems.";
+  "The definitive platform for developers who want to simplifiy the technical interview prep with structured, pattern-based roadmap trusted by over a million engineers. Master the patterns, not just the problems.";
 const CPU_NODE_PREVIEW_HREFS = [
   "/images/cpu-node-previews/node-01.png",
   "/images/cpu-node-previews/node-02.png",
