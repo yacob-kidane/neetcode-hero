@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { GeistPixelSquare } from "geist/font/pixel";
 import Script from "next/script";
-import { DialKitProvider } from "@/components/landing/DialKitProvider";
-import "dialkit/styles.css";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -70,7 +68,6 @@ gtag('config', 'G-2M6V79H761');
           `}
         </Script>
         {children}
-        <DialKitProvider />
       </body>
     </html>
   );

@@ -4,7 +4,6 @@ import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useDialKit } from "dialkit";
 import { Typewriter } from "@/registry/aliimam/components/typewriter";
 import { HeroStartLearningButton } from "@/components/landing/HeroStartLearningButton";
 import { useStagedPageReveal } from "@/components/landing/staged-page/StagedPageRevealContext";
@@ -60,7 +59,7 @@ const HERO_TITLE_ANIM_MS =
   (HERO_TITLE_MAIN.length - 1) * 35 + 350 + 200;
 /** Subtitle line + typewriter: only after the main title has popped in. */
 const HERO_SUBTITLE_START_MS = HERO_H1_CHOREOGRAPHY_BASE_MS + HERO_TITLE_ANIM_MS;
-/**
+/**re
  * Sequence (from hero mount):
  * 1. Title → 2. Subtitle + type “learn DSA” → 3. Tagline hold → 4. FlipTextReveal starts →
  * 5. Flip reveal runs → 6. {@link HERO_PAUSE_AFTER_FLIP_BEFORE_CYCLE_MS} → 7. Typewriter deletes / cycles.
@@ -93,9 +92,11 @@ const HERO_CTA_APPEAR_MS = HERO_FLIP_TEXT_START_MS + 900;
 /** Remount `Typewriter` when hero timing constants change so hold/wait timers pick up new values (dev/HMR). */
 const HERO_TYPEWRITER_TIMING_KEY = `${HERO_SUBTITLE_START_MS}-${HERO_TYPEWRITER_HOLD_BEFORE_CYCLE_MS}-${HERO_TYPEWRITER_WORD_PAUSE_MS}-${HERO_PAUSE_AFTER_FLIP_BEFORE_CYCLE_MS}`;
 
-/** MacBook column — layout only (no DialKit). */
+/** Hero flip copy card — fixed layout (previously DialKit defaults). */
+const HERO_COPY_CARD = { x: -46, y: -53, fontSize: 1.05 } as const;
+/** MacBook column — layout only. */
 const HERO_MACBOOK = { x: 65, y: -42, scale: 1.01 } as const;
-/** Diagram inset inside the mock screen — layout only (no DialKit). */
+/** Diagram inset inside the mock screen — layout only. */
 const HERO_DIAGRAM = { top: 18.5, left: 12.5, right: 13, bottom: 9, scale: 1.07 } as const;
 
 export function HeroSection() {
@@ -105,12 +106,6 @@ export function HeroSection() {
   const uiReady = revealPhase === "ready";
 
   const HERO_TITLE = { x: -14, y: -15 };
-
-  const heroCopyCard = useDialKit("Hero copy card", {
-    x: [-46, -120, 120, 1],
-    y: [-53, -120, 120, 1],
-    fontSize: [1.05, 0.85, 1.35, 0.01],
-  });
 
   useEffect(() => {
     if (!uiReady) {
@@ -206,9 +201,9 @@ export function HeroSection() {
                 <div
                   className="relative w-[500px] rounded-none bg-transparent px-5 pt-5 pb-4"
                   style={{
-                    transform: `translate(${heroCopyCard.x}px, ${heroCopyCard.y}px)`,
+                    transform: `translate(${HERO_COPY_CARD.x}px, ${HERO_COPY_CARD.y}px)`,
                     fontFamily: '"Delight", serif',
-                    fontSize: `${heroCopyCard.fontSize}rem`,
+                    fontSize: `${HERO_COPY_CARD.fontSize}rem`,
                   }}
                 >
                   <FlipTextReveal

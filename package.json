@@ -17,7 +17,6 @@
     "@paper-design/shaders-react": "^0.0.76",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "dialkit": "^1.2.0",
     "framer-motion": "^12.38.0",
     "geist": "^1.7.0",
     "gsap": "^3.15.0",
